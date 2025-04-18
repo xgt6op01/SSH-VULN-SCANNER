@@ -1,0 +1,87 @@
+{
+  "CVE-2016-0777": {
+    "versions": [
+      "OpenSSH_5.4", "OpenSSH_5.5", "OpenSSH_5.6", "OpenSSH_5.7", "OpenSSH_5.8", "OpenSSH_5.9",
+      "OpenSSH_6.0", "OpenSSH_6.1", "OpenSSH_6.2", "OpenSSH_6.3", "OpenSSH_6.4", "OpenSSH_6.5",
+      "OpenSSH_6.6", "OpenSSH_6.7", "OpenSSH_6.8", "OpenSSH_6.9", "OpenSSH_7.0", "OpenSSH_7.1"
+    ],
+    "github": ["https://github.com/0x27/CVE-2016-0777"],
+    "exploitdb": "https://www.exploit-db.com/exploits/39169"
+  },
+  "CVE-2023-48795": {
+    "versions": ["OpenSSH_9.1", "OpenSSH_9.2", "OpenSSH_9.3", "OpenSSH_9.4", "OpenSSH_9.5"],
+    "github": ["https://github.com/RUB-NDS/Terrapin-attack"],
+    "exploitdb": "https://www.exploit-db.com/exploits/52342"
+  },
+  "CVE-2024-6387": {
+    "versions": [
+      "OpenSSH_8.5p1", "OpenSSH_8.6p1", "OpenSSH_8.7p1", "OpenSSH_8.8p1", "OpenSSH_8.9p1",
+      "OpenSSH_9.0p1", "OpenSSH_9.1p1", "OpenSSH_9.2p1", "OpenSSH_9.3p1", "OpenSSH_9.4p1",
+      "OpenSSH_9.5p1", "OpenSSH_9.6p1", "OpenSSH_9.7p1"
+    ],
+    "github": [
+      "https://github.com/asterictnl-lvdw/CVE-2024-6387",
+      "https://github.com/xonoxitron/regreSSHion",
+      "https://github.com/Karmakstylez/CVE-2024-6387"
+    ],
+    "exploitdb": null
+  },
+  "CVE-2018-15473": {
+    "versions": ["OpenSSH_7.7", "OpenSSH_7.8"],
+    "github": [],
+    "exploitdb": "https://www.exploit-db.com/exploits/45233"
+  },
+  "CVE-2019-6111": {
+    "versions": ["OpenSSH_7.9", "OpenSSH_8.0"],
+    "github": [],
+    "exploitdb": "https://www.exploit-db.com/exploits/46516"
+  },
+  "CVE-2023-25136": {
+    "versions": ["OpenSSH_9.1"],
+    "github": ["https://github.com/jfrog/jfrog-CVE-2023-25136-OpenSSH_Double-Free"],
+    "exploitdb": null
+  },
+  "CVE-2023-38408": {
+    "versions": ["OpenSSH_9.3"],
+    "github": ["https://github.com/LucasPDiniz/CVE-2023-38408"],
+    "exploitdb": null
+  },
+  "CVE-2016-10009": {
+    "versions": ["OpenSSH_7.3", "OpenSSH_7.4"],
+    "github": [],
+    "exploitdb": "https://www.exploit-db.com/exploits/40963"
+  },
+  "CVE-2015-6565": {
+    "versions": ["OpenSSH_6.9", "OpenSSH_7.0"],
+    "github": [],
+    "exploitdb": "https://www.exploit-db.com/exploits/41173"
+  },
+  "CVE-2016-3115": {
+    "versions": ["OpenSSH_7.2"],
+    "github": [],
+    "exploitdb": "https://www.exploit-db.com/exploits/39569"
+  },
+  "CVE-2025-26465": {
+    "versions": [
+      "OpenSSH_6.8p1", "OpenSSH_6.9p1", "OpenSSH_7.0p1", "OpenSSH_7.1p1", "OpenSSH_7.2p1", 
+      "OpenSSH_7.3p1", "OpenSSH_7.4p1", "OpenSSH_7.5p1", "OpenSSH_7.6p1", "OpenSSH_7.7p1", 
+      "OpenSSH_7.8p1", "OpenSSH_7.9p1", "OpenSSH_8.0p1", "OpenSSH_8.1p1", "OpenSSH_8.2p1", 
+      "OpenSSH_8.3p1", "OpenSSH_8.4p1", "OpenSSH_8.5p1", "OpenSSH_8.6p1", "OpenSSH_8.7p1", 
+      "OpenSSH_8.8p1", "OpenSSH_8.9p1", "OpenSSH_9.0p1", "OpenSSH_9.1p1", "OpenSSH_9.2p1", 
+      "OpenSSH_9.3p1", "OpenSSH_9.4p1", "OpenSSH_9.5p1", "OpenSSH_9.6p1", "OpenSSH_9.7p1", 
+      "OpenSSH_9.8p1", "OpenSSH_9.9p1"
+    ],
+    "github": ["https://github.com/advisories/GHSA-jrwv-mv4h-7rrq"],
+    "exploitdb": null
+  },
+  "CVE-2025-26466": {
+    "versions": ["OpenSSH_9.5p1", "OpenSSH_9.6p1", "OpenSSH_9.7p1", "OpenSSH_9.8p1", "OpenSSH_9.9p1"],
+    "github": [],
+    "exploitdb": null
+  },
+  "CVE-2023-51767": {
+    "versions": ["OpenSSH_9.3", "OpenSSH_9.4"],
+    "github": ["https://github.com/advisories/GHSA-27q9-h529-q4g3"],
+    "exploitdb": null
+  }
+}

@@ -1,0 +1,19 @@
+kex:
+  - diffie-hellman-group1-sha1
+  - diffie-hellman-group14-sha1
+  - ecdh-sha2-nistp256
+
+cipher:
+  - 3des-cbc
+  - aes128-cbc
+  - aes192-cbc
+  - aes256-cbc
+
+mac:
+  - hmac-md5
+  - hmac-md5-96
+  - hmac-sha1-96
+
+host_key:
+  - ssh-dss
+  - ecdsa-sha2-nistp256

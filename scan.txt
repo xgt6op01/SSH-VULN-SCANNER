@@ -1,0 +1,91 @@
+import argparse
+import json
+import paramiko
+import socket
+import requests
+from colorama import Fore, Style
+from paramiko import SSHClient, RSAKey, DSSKey, ECDSAKey, Ed25519Key
+
+with open("cves.json", "r") as f:
+    CVE_DB = json.load(f)
+
+def get_ssh_banner(ip, port):
+    try:
+        sock = socket.create_connection((ip, port), timeout=5)
+        banner = sock.recv(1024).decode().strip()
+        sock.close()
+        return banner
+    except Exception:
+        return None
+
+def enumerate_ssh_info(ip, port):
+    try:
+        client = SSHClient()
+        client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+        client.connect(ip, port=port, username='test', password='wrongpassword', timeout=5)
+        transport = client.get_transport()
+        
+        supported_ciphers = transport.get_security_options().supported_ciphers
+        supported_kex = transport.get_security_options().supported_kex
+        supported_macs = transport.get_security_options().supported_macs
+
+        client.close()
+        return supported_ciphers, supported_kex, supported_macs
+    except Exception:
+        return None, None, None
+
+def check_vulnerabilities(banner):
+    results = []
+    for cve, refs in CVE_DB.items():
+        if cve.split("-")[1] in banner:
+            results.append((cve, refs))
+    return results
+
+def scan_host(ip, port):
+    banner = get_ssh_banner(ip, port)
+    if not banner:
+        print(f"{Fore.YELLOW}[!] {ip}:{port} - SSH not responding{Style.RESET_ALL}")
+        return
+
+    print(f"{Fore.CYAN}[+] {ip}:{port} - {banner}{Style.RESET_ALL}")
+    vulns = check_vulnerabilities(banner)
+
+    if vulns:
+        print(f"{Fore.RED}[!] Vulnerabilities found:{Style.RESET_ALL}")
+        for cve, refs in vulns:
+            print(f"    {Fore.MAGENTA}{cve}{Style.RESET_ALL}")
+            for link in refs["github"]:
+                print(f"        [GitHub] {link}")
+            if refs["exploitdb"]:
+                print(f"        [Exploit-DB] {refs['exploitdb']}")
+    else:
+        print(f"{Fore.GREEN}[-] No known CVEs matched for this version{Style.RESET_ALL}")
+    
+    supported_ciphers, supported_kex, supported_macs = enumerate_ssh_info(ip, port)
+    if supported_ciphers and supported_kex and supported_macs:
+        print(f"{Fore.YELLOW}[+] Supported Ciphers: {supported_ciphers}{Style.RESET_ALL}")
+        print(f"{Fore.YELLOW}[+] Supported Key Exchange Algorithms: {supported_kex}{Style.RESET_ALL}")
+        print(f"{Fore.YELLOW}[+] Supported MACs: {supported_macs}{Style.RESET_ALL}")
+    else:
+        print(f"{Fore.YELLOW}[!] Could not retrieve SSH info for {ip}:{port}{Style.RESET_ALL}")
+
+def main():
+    parser = argparse.ArgumentParser(description="Ultimate SSH Vulnerability Scanner")
+    parser.add_argument("-i", "--ip", help="Target IP address")
+    parser.add_argument("-l", "--list", help="File with list of IPs")
+    parser.add_argument("-p", "--port", type=int, default=22, help="SSH port (default: 22)")
+
+    args = parser.parse_args()
+    targets = []
+
+    if args.ip:
+        targets.append(args.ip)
+    if args.list:
+        with open(args.list) as f:
+            targets.extend([line.strip() for line in f if line.strip()])
+
+    for target in targets:
+        scan_host(target, args.port)
+
+if __name__ == "__main__":
+    main()
