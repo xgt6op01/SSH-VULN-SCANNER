@@ -21,6 +21,17 @@ Installation:
 1. Clone the repository or download the files.
 2. Install dependencies:
 
+To run this script, please follow this setp,
+####################Make sure to add a virtual environment#############
+sudo apt-get install python3-venv
+
+python3 -m venv ssh-scan
+
+source ssh-scan/bin/activate
+
+pip install -r requirements.txt
+
+##########################################
 
 Updating CVE Database:
 -----------------------
@@ -46,17 +57,6 @@ If you need to scan a non-default port (e.g., 2222), use the `-p` flag:
 
 python3 scanner.py -i <IP_ADDRESS> -p 2222
 
-
-##Make sure to add a virtual environment#############
-sudo apt-get install python3-venv
-
-python3 -m venv ssh-scan
-
-source ssh-scan/bin/activate
-
-pip install -r requirements.txt
-
-##########################################
 Output:
 -------
 The output shows the SSH banner, enumerated supported ciphers, key exchange algorithms, and MACs.
